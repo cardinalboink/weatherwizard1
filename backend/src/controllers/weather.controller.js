@@ -16,6 +16,7 @@ export async function getAverageWeather(req, res, next) {
     }
 
     const parsedDays = Number(days);
+    
     if (!Number.isInteger(parsedDays) || parsedDays <= 0) {
       throw new AppError(
         'days must be a positive integer',
