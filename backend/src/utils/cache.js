@@ -18,3 +18,7 @@ export function setCache(key, value, ttlMs = 15 * 60 * 1000) {
     expiresAt: Date.now() + ttlMs
   });
 }
+
+export function clearCache() {
+  store.clear();
+}

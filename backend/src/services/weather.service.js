@@ -78,3 +78,12 @@ export async function getAverageTemperature({
     );
   }
 }
+
+export function computeAverageTemperature(values) {
+  const valid = values.filter(v => typeof v === 'number');
+  if (!valid.length) return null;
+
+  const sum = valid.reduce((a, b) => a + b, 0);
+  return Number((sum / valid.length).toFixed(2));
+}
+
