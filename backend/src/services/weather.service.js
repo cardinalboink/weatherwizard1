@@ -1,7 +1,13 @@
 import axios from 'axios';
 import { AppError } from '../utils/errors.js';
 
-const WEATHER_URL = 'https://archive-api.open-meteo.com/v1/archive';
+// if (!process.env.BASE_URL) {
+//   throw new Error("BASE_URL is not defined in environment variables");
+// }
+
+// const WEATHER_URL = process.env.BASE_URL;
+
+const WEATHER_URL = process.env.BASE_URL || "https://archive-api.open-meteo.com/v1/archive";
 
 export async function getAverageTemperature({
   latitude,
