@@ -41,8 +41,7 @@ This is the backend service for the Weather Data Aggregation project. It provide
 
    ```env
    PORT=3001
-   WEATHER_API_KEY=your_api_key_here
-   BASE_URL=https://api.example.com
+   BASE_URL=https://archive-api.open-meteo.com/v1/archive
    ```
 
 4. Run the development server:
