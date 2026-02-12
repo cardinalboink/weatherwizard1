@@ -107,7 +107,7 @@ docker compose down
 ## Folder Structure
 
 ```
-weatherwizard/
+weatherwizard1/
 ├── backend/
 ├── frontend/
 ├── docker-compose.yml
