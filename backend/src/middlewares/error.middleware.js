@@ -10,7 +10,7 @@ export function errorHandler(err, req, res, next) {
     });
   }
 
-  console.error(err); // log unexpected errors
+  console.error(err);
 
   return res.status(500).json({
     error: {

@@ -31,7 +31,6 @@ export async function geocodeCity(city) {
       longitude: place.longitude
     };
   } catch (err) {
-    // pass through known errors
     if (err instanceof AppError) {
       throw err;
     }

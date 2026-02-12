@@ -17,7 +17,7 @@ export function buildSwaggerSpec() {
         }
       ]
     },
-    apis: ['./src/routes/*.js'] // "yaml" swagger instructions in JSDoc comments
+    apis: ['./src/routes/*.js'] // "yaml" swagger instructions
   };
 
   return swaggerJSDoc(options);

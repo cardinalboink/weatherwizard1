@@ -31,7 +31,7 @@ const { AppError } = await import('../src/utils/errors.js');
 //   getAverageTemperature: jest.fn()
 // }));
 
-// helper to fake res
+// helper to fake response object
 function mockRes() {
   return {
     json: jest.fn(),
