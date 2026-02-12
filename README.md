@@ -13,11 +13,8 @@ The project consists of:
 
 - Input a city and number of days.
 - Backend fetches historical weather data and computes the average temperature.
-- 15-minute in-memory caching.
-- Centralized error handling.
-- Unit and integration tests.
-- Dockerized frontend and backend.
-- Docker Compose orchestration.
+- Caching mechanism to optimize repeated requests.
+- Responsive and user-friendly UI.
 
 ---
 
@@ -26,7 +23,6 @@ The project consists of:
 - **Node.js** (v18+ recommended)
 - **npm**
 - **Docker** (for containerized setup)
-- Weather API key (if required by backend)
 
 ---
 
@@ -35,8 +31,8 @@ The project consists of:
 ### 1. Clone the Repository
 
 ```bash
-git clone <your-repository-url>
-cd weatherwizard
+git clone https://github.com/cardinalboink/weatherwizard1.git
+cd weatherwizard1
 ```
 
 ---
@@ -119,5 +115,3 @@ weatherwizard/
 ```
 
 ---
-
-This project demonstrates clean API layering, frontend-backend integration, testing practices, and Docker-based deployment.
