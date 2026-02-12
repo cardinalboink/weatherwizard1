@@ -82,7 +82,7 @@ npm test
 
 ---
 
-## Production Build
+## Build
 
 ```bash
 npm run build
