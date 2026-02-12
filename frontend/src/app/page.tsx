@@ -2,23 +2,18 @@
 
 import { useEffect, useRef, useState } from "react";
 import styles from "./page.module.css";
+import { ResultCard } from "@/components/ResultCard/ResultCard";
+import { ApiSuccess, ToastState } from "@/lib/types";
+import { fetchAverageWeather } from "@/lib/api";
 
-type ApiSuccess = {
-  city: string;
-  days: number;
-  averageTemperature: number;
-  unit?: string;
-  cached?: boolean;
-};
 
 export default function Home() {
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3001";
 
   const [city, setCity] = useState("");
   const [days, setDays] = useState(3);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<ApiSuccess | null>(null);
-  const [toast, setToast] = useState<{ message: string; type: "error" | "success" } | null>(null);
+  const [toast, setToast] = useState<ToastState | null>(null);
 
   const cacheRef = useRef<Record<string, ApiSuccess>>({});
 
@@ -80,16 +75,8 @@ export default function Home() {
     setData(null);
 
     try {
-      const url = new URL("/weather/average", backendUrl);
-      url.searchParams.set("city", city.trim());
-      url.searchParams.set("days", String(days));
-
-      const res = await fetch(url.toString());
-      const body = await res.json();
-
-      if (!res.ok) {
-        throw new Error(body?.error?.message || "Request failed");
-      }
+      
+      const body = await fetchAverageWeather(city.trim(), days);
 
       setData(body);
       // cacheRef.current[cacheKey] = body;
@@ -132,21 +119,7 @@ export default function Home() {
             </button>
           </div>
         </form>
-        {data && (
-          <div className={styles.resultBox}>
-            <div className={styles.cityName}>{data.city}</div>
-
-            <div className={styles.temperature}>
-              {data.averageTemperature}
-              {data.unit ? ` ${data.unit}` : ""}
-            </div>
-            <div className={styles.row}>
-              <div className={styles.daysBadge}>
-                {data.days} day{data.days > 1 ? "s" : ""}
-              </div>
-            </div>
-          </div>
-        )}
+        {data && <ResultCard city={data.city} days={data.days} averageTemperature={data.averageTemperature} unit={data.unit} cached={data.cached} />}
       </div>
     </main>
   );
